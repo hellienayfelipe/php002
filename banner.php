@@ -1,0 +1,1 @@
+<img src="filmes/banner.jpg" class="banner">
