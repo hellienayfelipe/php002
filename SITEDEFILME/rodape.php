@@ -1,5 +1,5 @@
 <?php
-include "cabecalho.php";
+
 ?>
 
 <footer class="rodape">

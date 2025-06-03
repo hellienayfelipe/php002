@@ -1,11 +1,13 @@
 <?php
 include "cabecalho.php";
-include "rodape.php";
+
 ?>
 <div class="lista-filmes">
     <div class="card-filme">
             <img src="filmes/filme1.webp">
+            <a href="umfilme.php">
             <h3>Jurassic Park</h3>
+            </a>
             <span>⭐ 10/10</span>
         </div>
         <div class="card-filme">
@@ -27,3 +29,6 @@ include "rodape.php";
     
     </body>
 </html>
+<?php
+include "rodape.php";
+?>
