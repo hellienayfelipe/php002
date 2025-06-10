@@ -37,9 +37,8 @@ header {
 }
 
 .lista-filmes img {
-    width: 250px;
+    width: auto;
     height: 350px;
-    object-fit: cover;
 }
 
 .lista-noticias {
@@ -148,7 +147,7 @@ button:hover {
     }
 }
 
-.container{
+/*.container{
     width: 900px;
     margin: 0 auto;
     display: flex;
