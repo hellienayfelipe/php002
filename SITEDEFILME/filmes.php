@@ -11,22 +11,27 @@ include "cabecalho.php";
         $senha = '';
 
         $conexao = mysqli_connect($servidor, $usuario, $senha, $bd);
-        if(!$conexao){
+        if (!$conexao) {
             die("deu ruim" . mysqli_connect_error());
         }
 
-        echo "deu bom";
+        $sql = "select * from filmes";
+        $resultado = mysqli_query($conexao, $sql);
+
+        //echo "<pre>";
+        //print_r($resultado);
+        //exit();
+        while($linha = mysqli_fetch_assoc($resultado)){
+            echo $linha['titulo'] . "<br>";
+        }
+        
+
         ?>
-    
-    <div class="col-3 mb-4">
-            <div class="card" style="width: 18rem;">
-                <img src="filmes/filme1.webp" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-text">Jurassic Park</h5>
-                    <p class="card-text">⭐ 10/10</p>
-                    <a href="umfilme.php" class="btn btn-primary">Veja detalhes</a>
-                </div>
-            </div>
+
+        <div class="col-3">
+            <img src="<?=$linha['foto'];?>" class="img-fluid">
+            <h3><?=$linha['titulo'];?></h3>
+            <span>⭐<?=$linha['avaliacao']?>/10</span>
         </div>
         <div class="col-3 mb-4">
 
@@ -88,18 +93,18 @@ include "cabecalho.php";
 </button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajuda</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Entre em contato através dos nossos canais de comunicação:</p>
-        <p>Email: filme@filme.com.br <br> Whatsapp: (11)9999999-9999 <br> <a href="contato.php">Formulario de contato</a> </p>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Ajuda</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Entre em contato através dos nossos canais de comunicação:</p>
+                <p>Email: filme@filme.com.br <br> Whatsapp: (11)9999999-9999 <br> <a href="contato.php">Formulario de contato</a> </p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <button type="button" class="btn btn-danger btn-lg mt-5 fs-5 f2-bold text-primary" data-bs-toggle="modal" data-bs-target="#meuModal">
@@ -107,18 +112,18 @@ include "cabecalho.php";
 </button>
 
 <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Meu Modal</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Veja as noticias!</p>
-        <p> <a href="listadenoticias.php">Clique Aqui!</a> </p>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Meu Modal</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Veja as noticias!</p>
+                <p> <a href="listadenoticias.php">Clique Aqui!</a> </p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
