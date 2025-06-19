@@ -2,71 +2,30 @@
 include "cabecalho.php";
 ?>
 <div class="container">
-    <h2 class="display-5">Melhores Avaliações</h2>
-    <div class="row mb-5">
-        <?php
-        $servidor = 'localhost';
-        $bd = 'movieflix';
-        $usuario = 'root';
-        $senha = '';
-
-        $conexao = mysqli_connect($servidor, $usuario, $senha, $bd);
-        if (!$conexao) {
-            die("deu ruim" . mysqli_connect_error());
-        }
-
-        $sql = "select * from filmes";
+    <h2 class="display-5">Melhores avaliações</h2>
+    <div class="row">
+        <?PHP
+        include "conexao.php";
+        $sql = "select * from filmes limit 4";
         $resultado = mysqli_query($conexao, $sql);
 
-        //echo "<pre>";
+        //echo"<PRE>";
         //print_r($resultado);
         //exit();
-        while($linha = mysqli_fetch_assoc($resultado)){
-            echo $linha['titulo'] . "<br>";
-        }
-        
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+        ?>
+            <div class="col-3 mb-4">
+                <img src="<?= $linha['foto']; ?>" class="img-fluid">
+                <h3><?= $linha['titulo']; ?></h3>
+                <span>⭐<?= $linha['avaliacao']; ?>/10</span>
+            </div>
+        <?PHP
+        } 
 
+        mysqli_close($conexao);
         ?>
 
-        <div class="col-3">
-            <img src="<?=$linha['foto'];?>" class="img-fluid">
-            <h3><?=$linha['titulo'];?></h3>
-            <span>⭐<?=$linha['avaliacao']?>/10</span>
-        </div>
-        <div class="col-3 mb-4">
-
-            <div class="card" style="width: 18rem;">
-                <img src="filmes/filme2.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-text">Karate Kid</h5>
-                    <p class="card-text">
-                        ⭐ 10/10</p>
-                    <a href="umfilme.php" class="btn btn-primary">Veja detalhes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-3 mb-4">
-            <div class="card" style="width: 18rem;">
-                <img src="filmes/filme3.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-text">Lilo e Stitch</h5>
-                    <p class="card-text">
-                        ⭐ 10/10</p>
-                    <a href="umfilme.php" class="btn btn-primary">Veja detalhes</a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="filmes/filme4.jpg" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-text">Pecadores</h5>
-                <p class="card-text">
-                    ⭐ 10/10</p>
-                <a href="umfilme.php" class="btn btn-primary">Veja detalhes</a>
-            </div>
-        </div>
     </div>
-</div>
 </div>
 <div class="row">
     <div class="col-6">
